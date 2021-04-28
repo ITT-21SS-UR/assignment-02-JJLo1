@@ -40,7 +40,8 @@ class IttCalculator(QtWidgets.QWidget):
             self.__equation_text = self.__equation_text[:-1]
             self.__equation_label.setText(self.__equation_text)
 
-    # calculates and returns the result of the equation by using the eval() function, returns "Err" string if the equation cant be solved
+    # calculates and returns the result of the equation by using the eval() function,
+    # returns "Err" string if the equation cant be solved
     def __calculate_result(self):
         try:
             result = str(eval(self.__equation_text))
@@ -48,22 +49,26 @@ class IttCalculator(QtWidgets.QWidget):
         except:
             return "Err"
 
-    # sends a new keyboard "command" input (enter, clear or backspace) to the log (through the decorator) and to the executes_command() function
+    # sends a new keyboard "command" input (enter, clear or backspace) to the log (through the decorator)
+    # and to the executes_command() function
     @input_logging_decorator
     def __keyboard_input_command(self, new_input):
         self.__execute_command(new_input)
 
-    # sends a new mouse "command" input (enter, clear or backspace) to the log (through the decorator) and to the execute_command() function
+    # sends a new mouse "command" input (enter, clear or backspace) to the log (through the decorator)
+    # and to the execute_command() function
     @input_logging_decorator
     def __mouse_input_command(self, button):
         self.__execute_command(button)
 
-    # sends a new keyboard "number or operator" input to the log (through the decorator) and to the add_to_equation() function
+    # sends a new keyboard "number or operator" input to the log (through the decorator)
+    # and to the add_to_equation() function
     @input_logging_decorator
     def __keyboard_input_number_or_operator(self, new_input):
         self.__add_to_equation(new_input)
 
-    # sends a new mouse "number or operator" input to the log (through the decorator) and to the add_to_equation() function
+    # sends a new mouse "number or operator" input to the log (through the decorator)
+    # and to the add_to_equation() function
     @input_logging_decorator
     def __mouse_input_number_or_operator(self, button):
         self.__add_to_equation(button)
